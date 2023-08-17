@@ -1,0 +1,87 @@
+<h2 class="my-3">{{ isEdit ? 'Edit' : 'Add' }} Employee</h2>
+<hr>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+
+        <div class="col-md-4 mb-3">
+            <label for="inputFirstName" class="form-label">First Name</label>
+            <input type="text" formControlName="firstName" class="form-control" id="inputFirstName"
+                [ngClass]="{ 'is-invalid': submitted && empForm.firstName.errors }" />
+            <div *ngIf="submitted && empForm.firstName.errors" class="invalid-feedback">
+                <div *ngIf="empForm.firstName.errors.required">
+                    First Name is required
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <label for="inputLastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="inputLastName" formControlName="lastName" id="inputLastName"
+                [ngClass]="{ 'is-invalid': submitted && empForm.lastName.errors }">
+            <div *ngIf="submitted && empForm.lastName.errors" class="invalid-feedback">
+                <div *ngIf="empForm.lastName.errors.required">
+                    Last Name is required
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Email" formControlName="email"
+                [ngClass]="{ 'is-invalid': submitted && empForm.email.errors }">
+            <div *ngIf="submitted && empForm.email.errors" class="invalid-feedback">
+                <div *ngIf="empForm.email.errors.required">
+                    Email is required
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="inputPanNumber" class="form-label">PAN Number</label>
+            <input type="text" class="form-control" id="inputPanNumber" placeholder="PAN Number"
+                formControlName="panNumber" [ngClass]="{ 'is-invalid': submitted && empForm.panNumber.errors }">
+            <div *ngIf="submitted && empForm.panNumber.errors" class="invalid-feedback">
+                <div *ngIf="empForm.panNumber.errors.required">
+                    PAN is required
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="inputPhoneNumber" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" id="inputPhoneNumber" placeholder="Phone Number"
+                formControlName="phoneNumber" [ngClass]="{ 'is-invalid': submitted && empForm.phoneNumber.errors }">
+            <div *ngIf="submitted && empForm.phoneNumber.errors" class="invalid-feedback">
+                <div *ngIf="empForm.phoneNumber.errors.required">
+                    Phone Number is required
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <label for="inputGender" class="form-label">Gender</label>
+            <select id="inputGender" class="form-select" aria-label="Default select example" formControlName="gender"
+                [ngClass]="{ 'is-invalid': submitted && empForm.gender.errors }">
+                <option selected>Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <div *ngIf="submitted && empForm.gender.errors" class="invalid-feedback">
+                <div *ngIf="empForm.gender.errors.required">
+                    Gender is required
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-light ms-3" [routerLink]="'employee/list'">Cancel</button>
+    </div>
+
+</form>
+
+<hr>

@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-between my-3">
+
+	<h2>Employee List</h2>
+	<button type="button " class="btn btn-primary float-end btn-block " [routerLink]="'../create'">New employee</button>
+
+</div>
+
+
+<hr>
+
+
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">Id</th>
+			<th scope="col">First Name</th>
+			<th scope="col">Last Name</th>
+			<th scope="col">Email</th>
+			<th scope="col">Pan Number</th>
+			<th scope="col">Phone NUmber</th>
+			<th scope="col">Gender</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let e of employees; index as i" (click)="rowClick(e.id)">
+			<td>{{ e.id }}</td>
+			<td>{{ e.firstName }}</td>
+			<td>{{ e.lastName }}</td>
+			<td>{{ e.email }}</td>
+			<td>{{ e.panNumber }}</td>
+			<td>{{ e.phoneNumber }}</td>
+			<td>{{ e.gender}}</td>
+		</tr>
+	</tbody>
+</table>
